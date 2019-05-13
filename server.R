@@ -1688,164 +1688,104 @@ shinyServer(function(input, output) {
       } else({ n.comp = length(Pi)/3 })
       
       C = matrix(nrow=length(B.d),ncol=n.comp)
-      if(n.comp == 1){
-        if(input$skew.option == FALSE){
-          C[,1] = Pi[3]*(max(G.sm)*(dsnorm(B.d,Pi[1],Pi[2],Pi[4])/max(dsnorm(B.d,Pi[1],Pi[2],Pi[4]))))
-        } else({
-          C[,1] = Pi[3]*(max(G.sm)*(dnorm(B.d,Pi[1],Pi[2])/max(dnorm(B.d,Pi[1],Pi[2]))))
-        })
-        G.model = C[,1]
-      }
-      if(n.comp == 2){
-        if(input$skew.option == FALSE){
-          C[,1] = Pi[3]*(max(G.sm)*(dsnorm(B.d,Pi[1],Pi[2],Pi[4])/max(dsnorm(B.d,Pi[1],Pi[2],Pi[4]))))
-          C[,2] = Pi[7]*(max(G.sm)*(dsnorm(B.d,Pi[5],Pi[6],Pi[8])/max(dsnorm(B.d,Pi[5],Pi[6],Pi[8]))))
-        } else({
-          C[,1] = Pi[3]*(max(G.sm)*(dnorm(B.d,Pi[1],Pi[2])/max(dnorm(B.d,Pi[1],Pi[2]))))
-          C[,2] = Pi[6]*(max(G.sm)*(dnorm(B.d,Pi[4],Pi[5])/max(dnorm(B.d,Pi[4],Pi[5]))))
-        })
-        G.model = C[,1]+C[,2]
-      }
-      if(n.comp == 3){
-        if(input$skew.option == FALSE){
-          C[,1] = Pi[3]*(max(G.sm)*(dsnorm(B.d,Pi[1],Pi[2],Pi[4])/max(dsnorm(B.d,Pi[1],Pi[2],Pi[4]))))
-          C[,2] = Pi[7]*(max(G.sm)*(dsnorm(B.d,Pi[5],Pi[6],Pi[8])/max(dsnorm(B.d,Pi[5],Pi[6],Pi[8]))))
-          C[,3] = Pi[11]*(max(G.sm)*(dsnorm(B.d,Pi[9],Pi[10],Pi[12])/max(dsnorm(B.d,Pi[9],Pi[10],Pi[12]))))
-        } else({
-          C[,1] = Pi[3]*(max(G.sm)*(dnorm(B.d,Pi[1],Pi[2])/max(dnorm(B.d,Pi[1],Pi[2]))))
-          C[,2] = Pi[6]*(max(G.sm)*(dnorm(B.d,Pi[4],Pi[5])/max(dnorm(B.d,Pi[4],Pi[5]))))
-          C[,3] = Pi[9]*(max(G.sm)*(dnorm(B.d,Pi[7],Pi[8])/max(dnorm(B.d,Pi[7],Pi[8]))))
-        })
-        G.model = C[,1]+C[,2]+C[,3]
-      }
-      if(n.comp == 4){
-        if(input$skew.option == FALSE){
-          C[,1] = Pi[3]*(max(G.sm)*(dsnorm(B.d,Pi[1],Pi[2],Pi[4])/max(dsnorm(B.d,Pi[1],Pi[2],Pi[4]))))
-          C[,2] = Pi[7]*(max(G.sm)*(dsnorm(B.d,Pi[5],Pi[6],Pi[8])/max(dsnorm(B.d,Pi[5],Pi[6],Pi[8]))))
-          C[,3] = Pi[11]*(max(G.sm)*(dsnorm(B.d,Pi[9],Pi[10],Pi[12])/max(dsnorm(B.d,Pi[9],Pi[10],Pi[12]))))
-          C[,4] = Pi[15]*(max(G.sm)*(dsnorm(B.d,Pi[13],Pi[14],Pi[16])/max(dsnorm(B.d,Pi[13],Pi[14],Pi[16]))))
-        } else({
-          C[,1] = Pi[3]*(max(G.sm)*(dnorm(B.d,Pi[1],Pi[2])/max(dnorm(B.d,Pi[1],Pi[2]))))
-          C[,2] = Pi[6]*(max(G.sm)*(dnorm(B.d,Pi[4],Pi[5])/max(dnorm(B.d,Pi[4],Pi[5]))))
-          C[,3] = Pi[9]*(max(G.sm)*(dnorm(B.d,Pi[7],Pi[8])/max(dnorm(B.d,Pi[7],Pi[8]))))
-          C[,4] = Pi[12]*(max(G.sm)*(dnorm(B.d,Pi[10],Pi[11])/max(dnorm(B.d,Pi[10],Pi[11]))))
-        })
-        G.model = C[,1]+C[,2]+C[,3]+C[,4]
-      }
-      if(n.comp == 5){
-        if(input$skew.option == FALSE){
-          C[,1] = Pi[3]*(max(G.sm)*(dsnorm(B.d,Pi[1],Pi[2],Pi[4])/max(dsnorm(B.d,Pi[1],Pi[2],Pi[4]))))
-          C[,2] = Pi[7]*(max(G.sm)*(dsnorm(B.d,Pi[5],Pi[6],Pi[8])/max(dsnorm(B.d,Pi[5],Pi[6],Pi[8]))))
-          C[,3] = Pi[11]*(max(G.sm)*(dsnorm(B.d,Pi[9],Pi[10],Pi[12])/max(dsnorm(B.d,Pi[9],Pi[10],Pi[12]))))
-          C[,4] = Pi[15]*(max(G.sm)*(dsnorm(B.d,Pi[13],Pi[14],Pi[16])/max(dsnorm(B.d,Pi[13],Pi[14],Pi[16]))))
-          C[,5] = Pi[19]*(max(G.sm)*(dsnorm(B.d,Pi[17],Pi[18],Pi[20])/max(dsnorm(B.d,Pi[17],Pi[18],Pi[20]))))
-        } else({
-          C[,1] = Pi[3]*(max(G.sm)*(dnorm(B.d,Pi[1],Pi[2])/max(dnorm(B.d,Pi[1],Pi[2]))))
-          C[,2] = Pi[6]*(max(G.sm)*(dnorm(B.d,Pi[4],Pi[5])/max(dnorm(B.d,Pi[4],Pi[5]))))
-          C[,3] = Pi[9]*(max(G.sm)*(dnorm(B.d,Pi[7],Pi[8])/max(dnorm(B.d,Pi[7],Pi[8]))))
-          C[,4] = Pi[12]*(max(G.sm)*(dnorm(B.d,Pi[10],Pi[11])/max(dnorm(B.d,Pi[10],Pi[11]))))
-          C[,5] = Pi[15]*(max(G.sm)*(dnorm(B.d,Pi[13],Pi[14])/max(dnorm(B.d,Pi[13],Pi[14]))))
-        })
-        G.model = C[,1]+C[,2]+C[,3]+C[,4]+C[,5]
-      }
-      if(n.comp == 6){
-        if(input$skew.option == FALSE){
-          C[,1] = Pi[3]*(max(G.sm)*(dsnorm(B.d,Pi[1],Pi[2],Pi[4])/max(dsnorm(B.d,Pi[1],Pi[2],Pi[4]))))
-          C[,2] = Pi[7]*(max(G.sm)*(dsnorm(B.d,Pi[5],Pi[6],Pi[8])/max(dsnorm(B.d,Pi[5],Pi[6],Pi[8]))))
-          C[,3] = Pi[11]*(max(G.sm)*(dsnorm(B.d,Pi[9],Pi[10],Pi[12])/max(dsnorm(B.d,Pi[9],Pi[10],Pi[12]))))
-          C[,4] = Pi[15]*(max(G.sm)*(dsnorm(B.d,Pi[13],Pi[14],Pi[16])/max(dsnorm(B.d,Pi[13],Pi[14],Pi[16]))))
-          C[,5] = Pi[19]*(max(G.sm)*(dsnorm(B.d,Pi[17],Pi[18],Pi[20])/max(dsnorm(B.d,Pi[17],Pi[18],Pi[20]))))
-          C[,6] = Pi[23]*(max(G.sm)*(dsnorm(B.d,Pi[21],Pi[22],Pi[24])/max(dsnorm(B.d,Pi[21],Pi[22],Pi[24]))))
-        } else({
-          C[,1] = Pi[3]*(max(G.sm)*(dnorm(B.d,Pi[1],Pi[2])/max(dnorm(B.d,Pi[1],Pi[2]))))
-          C[,2] = Pi[6]*(max(G.sm)*(dnorm(B.d,Pi[4],Pi[5])/max(dnorm(B.d,Pi[4],Pi[5]))))
-          C[,3] = Pi[9]*(max(G.sm)*(dnorm(B.d,Pi[7],Pi[8])/max(dnorm(B.d,Pi[7],Pi[8]))))
-          C[,4] = Pi[12]*(max(G.sm)*(dnorm(B.d,Pi[10],Pi[11])/max(dnorm(B.d,Pi[10],Pi[11]))))
-          C[,5] = Pi[15]*(max(G.sm)*(dnorm(B.d,Pi[13],Pi[14])/max(dnorm(B.d,Pi[13],Pi[14]))))
-          C[,6] = Pi[18]*(max(G.sm)*(dnorm(B.d,Pi[16],Pi[17])/max(dnorm(B.d,Pi[16],Pi[17]))))
-        })
-        G.model = C[,1]+C[,2]+C[,3]+C[,4]+C[,5]+C[,6]
+      
+      create_C_comp_false <- fun(a, b, c, d) {
+        return (Pi[a]*
+                  (max(G.sm)*
+                     (dsnorm(B.d,Pi[b],Pi[c],Pi[d])/
+                        max(dsnorm(B.d,Pi[b],Pi[c],Pi[d])))))
       }
       
+      create_C_comp_true <- function(a, b, c) {
+        return (Pi[a] * (max(G.sm) * (dnorm(B.d, Pi[b], Pi[c]) / max(
+          dnorm(B.d, Pi[b], Pi[c])
+        ))))
+      }
+      
+      g.model_create <- function(n.comp) {
+        if (input$skew.option == FALSE) {
+          for (i in 1:n.comp) {
+            n = 4 * i - 1
+            C[, i] = create_C_comp_false(n, n - 2, n - 1, n + 1)
+          }
+        }
+        if (input$skew.option == TRUE) {
+          for (i in 1:n.comp) {
+            n = i * 3
+            C[, i] = create_C_comp_true(n, n - 2, n - 1)
+          }
+        }
+      }
+  
+    
+      if (n.comp == 1) {
+        g.model_create(n.comp)
+        G.model = C[, 1]
+      }
+      if (n.comp == 2) {
+        g.model_create(n.comp)
+        G.model = C[, 1] + C[, 2]
+      }
+      if (n.comp == 3) {
+        g.model_create(n.comp)
+        G.model = C[, 1] + C[, 2] + C[, 3]
+      }
+      if (n.comp == 4) {
+        g.model_create(n.comp)
+        G.model = C[, 1] + C[, 2] + C[, 3] + C[, 4]
+      }
+      if (n.comp == 5) {
+        g.model_create(n.comp)
+        G.model = C[, 1] + C[, 2] + C[, 3] + C[, 4] + C[, 5]
+      }
+      if (n.comp == 6) {
+        g.model_create(n.comp)
+        G.model = C[, 1] + C[, 2] + C[, 3] + C[, 4] + C[, 5] + C[, 6]
+      }
+    
+      
       ##### set up optimization function ###
-      if(n.comp == 1){
+      
+      opt_fun <- function(n.comp) {
         fitG <- function(x,y,Pi){
           f=function(Pi){
             if(input$skew.option == FALSE){
-              tot.n = Pi[3]*(max(G.sm)*(dsnorm(B.d,Pi[1],Pi[2],Pi[4])/max(dsnorm(B.d,Pi[1],Pi[2],Pi[4]))))
-            }else({
-              tot.n = Pi[3]*(max(G.sm)*(dnorm(B.d,Pi[1],Pi[2])/max(dnorm(B.d,Pi[1],Pi[2]))))
-            })
+              tot.n = NULL
+              for (i in 1:n.comp) {
+                tot.n = tot.n + create_C_comp_false(4*i-1, 4*i-3, 4*i-2, 4*i)
+                }
+              } 
+            else {
+              tot.n = NULL
+              for(i in 1:n.comp) {
+                tot.n = tot.n + create_C_comp_true(3*i, 3*i-2, 3*i-1)
+              }
+            }
             sum(((tot.n-G.sm)^2))
           }
           optim(Pi,f)
         }
+      }
+    
+      if(n.comp == 1){
+        opt_fun(1)
       }
       if(n.comp == 2){
-        fitG <- function(x,y,Pi){
-          f=function(Pi){
-            if(input$skew.option == FALSE){
-              tot.n = Pi[3]*(max(G.sm)*(dsnorm(B.d,Pi[1],Pi[2],Pi[4])/max(dsnorm(B.d,Pi[1],Pi[2],Pi[4]))))+Pi[7]*(max(G.sm)*(dsnorm(B.d,Pi[5],Pi[6],Pi[8])/max(dsnorm(B.d,Pi[5],Pi[6],Pi[8]))))
-            }else({
-              tot.n = Pi[3]*(max(G.sm)*(dnorm(B.d,Pi[1],Pi[2])/max(dnorm(B.d,Pi[1],Pi[2]))))+Pi[6]*(max(G.sm)*(dnorm(B.d,Pi[4],Pi[5])/max(dnorm(B.d,Pi[4],Pi[5]))))
-            })
-            sum(((tot.n-G.sm)^2))
-          }
-          optim(Pi,f)
-        }
+        opt_fun(2)
       }
       if(n.comp == 3){
-        fitG <- function(x,y,Pi){
-          f=function(Pi){
-            if(input$skew.option == FALSE){
-              tot.n = Pi[3]*(max(G.sm)*(dsnorm(B.d,Pi[1],Pi[2],Pi[4])/max(dsnorm(B.d,Pi[1],Pi[2],Pi[4]))))+Pi[7]*(max(G.sm)*(dsnorm(B.d,Pi[5],Pi[6],Pi[8])/max(dsnorm(B.d,Pi[5],Pi[6],Pi[8]))))+Pi[11]*(max(G.sm)*(dsnorm(B.d,Pi[9],Pi[10],Pi[12])/max(dsnorm(B.d,Pi[9],Pi[10],Pi[12]))))
-            } else({
-              tot.n = Pi[3]*(max(G.sm)*(dnorm(B.d,Pi[1],Pi[2])/max(dnorm(B.d,Pi[1],Pi[2]))))+Pi[6]*(max(G.sm)*(dnorm(B.d,Pi[4],Pi[5])/max(dnorm(B.d,Pi[4],Pi[5]))))+Pi[9]*(max(G.sm)*(dnorm(B.d,Pi[7],Pi[8])/max(dnorm(B.d,Pi[7],Pi[8]))))
-            })
-            sum(((tot.n-G.sm)^2))
-          }
-          optim(Pi,f)
-        }
+        opt_fun(3)
       }
       if(n.comp == 4){
-        fitG <- function(x,y,Pi){
-          f=function(Pi){
-            if(input$skew.option == FALSE){
-              tot.n = Pi[3]*(max(G.sm)*(dsnorm(B.d,Pi[1],Pi[2],Pi[4])/max(dsnorm(B.d,Pi[1],Pi[2],Pi[4]))))+Pi[7]*(max(G.sm)*(dsnorm(B.d,Pi[5],Pi[6],Pi[8])/max(dsnorm(B.d,Pi[5],Pi[6],Pi[8]))))+Pi[11]*(max(G.sm)*(dsnorm(B.d,Pi[9],Pi[10],Pi[12])/max(dsnorm(B.d,Pi[9],Pi[10],Pi[12]))))+Pi[15]*(max(G.sm)*(dsnorm(B.d,Pi[13],Pi[14],Pi[16])/max(dsnorm(B.d,Pi[13],Pi[14],Pi[16]))))
-            } else({
-              tot.n = Pi[3]*(max(G.sm)*(dnorm(B.d,Pi[1],Pi[2])/max(dnorm(B.d,Pi[1],Pi[2]))))+Pi[6]*(max(G.sm)*(dnorm(B.d,Pi[4],Pi[5])/max(dnorm(B.d,Pi[4],Pi[5]))))+Pi[9]*(max(G.sm)*(dnorm(B.d,Pi[7],Pi[8])/max(dnorm(B.d,Pi[7],Pi[8]))))+Pi[12]*(max(G.sm)*(dnorm(B.d,Pi[10],Pi[11])/max(dnorm(B.d,Pi[10],Pi[11]))))
-            })
-            sum(((tot.n-G.sm)^2))
-          }
-          optim(Pi,f)
-        }
+        opt_fun(4)
       }
       if(n.comp == 5){
-        fitG <- function(x,y,Pi){
-          f=function(Pi){
-            if(input$skew.option == FALSE){
-              tot.n = Pi[3]*(max(G.sm)*(dsnorm(B.d,Pi[1],Pi[2],Pi[4])/max(dsnorm(B.d,Pi[1],Pi[2],Pi[4]))))+Pi[7]*(max(G.sm)*(dsnorm(B.d,Pi[5],Pi[6],Pi[8])/max(dsnorm(B.d,Pi[5],Pi[6],Pi[8]))))+Pi[11]*(max(G.sm)*(dsnorm(B.d,Pi[9],Pi[10],Pi[12])/max(dsnorm(B.d,Pi[9],Pi[10],Pi[12]))))+Pi[15]*(max(G.sm)*(dsnorm(B.d,Pi[13],Pi[14],Pi[16])/max(dsnorm(B.d,Pi[13],Pi[14],Pi[16]))))+Pi[19]*(max(G.sm)*(dsnorm(B.d,Pi[17],Pi[18],Pi[20])/max(dsnorm(B.d,Pi[17],Pi[18],Pi[20]))))
-            } else({
-              tot.n = Pi[3]*(max(G.sm)*(dnorm(B.d,Pi[1],Pi[2])/max(dnorm(B.d,Pi[1],Pi[2]))))+Pi[6]*(max(G.sm)*(dnorm(B.d,Pi[4],Pi[5])/max(dnorm(B.d,Pi[4],Pi[5]))))+Pi[9]*(max(G.sm)*(dnorm(B.d,Pi[7],Pi[8])/max(dnorm(B.d,Pi[7],Pi[8]))))+Pi[12]*(max(G.sm)*(dnorm(B.d,Pi[10],Pi[11])/max(dnorm(B.d,Pi[10],Pi[11]))))+Pi[15]*(max(G.sm)*(dnorm(B.d,Pi[13],Pi[14])/max(dnorm(B.d,Pi[13],Pi[14]))))
-            })
-            sum(((tot.n-G.sm)^2))
-          }
-          optim(Pi,f)
-        }
+        opt_fun(5)
       }
       if(n.comp == 6){
-        fitG <- function(x,y,Pi){
-          f=function(Pi){
-            if(input$skew.option == FALSE){
-              tot.n = Pi[3]*(max(G.sm)*(dsnorm(B.d,Pi[1],Pi[2],Pi[4])/max(dsnorm(B.d,Pi[1],Pi[2],Pi[4]))))+Pi[7]*(max(G.sm)*(dsnorm(B.d,Pi[5],Pi[6],Pi[8])/max(dsnorm(B.d,Pi[5],Pi[6],Pi[8]))))+Pi[11]*(max(G.sm)*(dsnorm(B.d,Pi[9],Pi[10],Pi[12])/max(dsnorm(B.d,Pi[9],Pi[10],Pi[12]))))+Pi[15]*(max(G.sm)*(dsnorm(B.d,Pi[13],Pi[14],Pi[16])/max(dsnorm(B.d,Pi[13],Pi[14],Pi[16]))))+Pi[19]*(max(G.sm)*(dsnorm(B.d,Pi[17],Pi[18],Pi[20])/max(dsnorm(B.d,Pi[17],Pi[18],Pi[20]))))+Pi[23]*(max(G.sm)*(dsnorm(B.d,Pi[21],Pi[22],Pi[24])/max(dsnorm(B.d,Pi[21],Pi[22],Pi[24]))))
-            } else({
-              tot.n = Pi[3]*(max(G.sm)*(dnorm(B.d,Pi[1],Pi[2])/max(dnorm(B.d,Pi[1],Pi[2]))))+Pi[6]*(max(G.sm)*(dnorm(B.d,Pi[4],Pi[5])/max(dnorm(B.d,Pi[4],Pi[5]))))+Pi[9]*(max(G.sm)*(dnorm(B.d,Pi[7],Pi[8])/max(dnorm(B.d,Pi[7],Pi[8]))))+Pi[12]*(max(G.sm)*(dnorm(B.d,Pi[10],Pi[11])/max(dnorm(B.d,Pi[10],Pi[11]))))+Pi[15]*(max(G.sm)*(dnorm(B.d,Pi[13],Pi[14])/max(dnorm(B.d,Pi[13],Pi[14]))))+Pi[18]*(max(G.sm)*(dnorm(B.d,Pi[16],Pi[17])/max(dnorm(B.d,Pi[16],Pi[17]))))
-            })
-            sum(((tot.n-G.sm)^2))
-          }
-          optim(Pi,f)
-        }
+        opt_fun(6)
       }
+      
       fit.test = fitG(x=B.d,y=G.sm,Pi) #run function
       
       Pf = fit.test$par

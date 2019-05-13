@@ -1,0 +1,21 @@
+- get rid of repeated code
+    - reproduce-able code (lines 1700-1800) **
+
+- want to upload multiple magnetization curves
+    - option to upload multiple tables of data 
+
+- struggling with making reactive objects, which is why there exists a lot of
+  repeating data
+
+- some bugs
+    - sometimes kicks people off server
+    - 100 resamples takes a long time
+    - components 3 and 4 are the same (line 2140 and up)
+
+- last issue: hosting
+    - yearly cost is too expensive
+    - statistics dept. has a server, but now Dan can't figure out
+      how to push updates to that server
+    - should live at servers at carleton, or should he push for funding?
+    - could he push to GitHub, and have it automatically uploaded
+      to the server?
